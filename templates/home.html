@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url(/static/bg.jpg);
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="bg-success text-white p-2">
+        <h1>
+            <marquee behavior="" direction="">
+                Machine Learning based crop recommendation system 
+            </marquee>
+        </h1>
+    </header>
+    <div class="container bg-info">
+
+        <h2>Input the parameters </h2>
+        <form action="/predict" name="f1" method="post">
+
+            <table class="table">
+
+
+                <tr>
+                    <td>Nitrogen</td>
+                    <td>
+                        <input type="text" name="n" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Phosphrous</td>
+                    <td>
+                        <input type="text" name="p" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Pottasium</td>
+                    <td>
+                        <input type="text" name="k" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Temperature</td>
+                    <td>
+                        <input type="text" name="temp" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td>
+                        <input type="text" name="hum" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ph</td>
+                    <td>
+                        <input type="text" name="ph" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rainfall</td>
+                    <td>
+                        <input type="text" name="rain" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="reset" class="btn btn-danger">
+                    </td>
+                    <td>
+                        <input type="submit" value="recommend crop" class="btn btn-success">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    {% if res %}
+        <div class="container text-center p-2" style="background-color: aliceblue; border-radius: 12px;">
+            <h3>Recommended crop is : {{ res }}</h3>
+            <img src="/static/{{ res }}.jpg" alt="" width="200" heigth="200">
+        </div>
+        
+    {% endif %}
+</body>
+</html>
